@@ -1,11 +1,13 @@
-import './App.css';
-import MoviesAndShows from "./component/MoviesAndShows"
+import React from 'react';
+import SearchForm from './component/SearchForm';
 
-function App() {
+function App () {
   return (
-    <div className="MoviesAndShows">
+    <div>
+      <h1>Streaming Availability Search</h1>
+      <SearchForm />
     </div>
   );
-}
+};
 
-export default App;
+export default App
