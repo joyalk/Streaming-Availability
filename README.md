@@ -22,3 +22,6 @@ The lesson I learnt from this app is the usability of react, and how different a
 
 ## Future Features
 I would like to add a scroll function that lets us scroll to the bottom of the favourites, so it shows more streaming services and etc. Kind of similar to what we did the giphy tasks. I would also like to add a feature where you can search just by genre without inputting the title.
+
+## Game Link
+streaming-availability.surge.sh
