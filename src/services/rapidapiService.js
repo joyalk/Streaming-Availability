@@ -3,7 +3,7 @@ const BASE_URL = "https://streaming-availability.p.rapidapi.com/v2";
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "",
+    "X-RapidAPI-Key": process.env.REACT_APP_SECRET_KEY,
     "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
   },
 };
