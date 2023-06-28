@@ -30,11 +30,7 @@ const App = () => {
     if (favoriteMovies.includes(movie)) {
       setFavoriteMovies(favoriteMovies.filter((m) => m !== movie));
     } else {
-      if (favoriteMovies.length < 5) {
-        setFavoriteMovies([...favoriteMovies, movie]);
-      } else {
-        console.log("Maximum limit of favorite movies reached.");
-      }
+      setFavoriteMovies([...favoriteMovies, movie]);
     }
   };
 
