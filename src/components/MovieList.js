@@ -9,14 +9,7 @@ import {
   ListItem,
 } from "@mui/material";
 
-const MovieList = ({
-  movies,
-  handleTrailerClick,
-  handleStreamingInfo,
-  favoriteMovies,
-  toggleFavoriteMovie,
-}) => {
-  const platformPrices = {
+  export const platformPrices = {
     apple: 9.99,
     prime: 8.99,
     hulu: 7.99,
@@ -24,6 +17,14 @@ const MovieList = ({
     hbo: 11.99,
     disney: 10.99,
   };
+  
+  const MovieList = ({
+  movies,
+  handleTrailerClick,
+  handleStreamingInfo,
+  favoriteMovies,
+  toggleFavoriteMovie,
+}) => {
 
   const isMovieFavorite = (movie) => favoriteMovies.includes(movie);
 
@@ -90,7 +91,7 @@ const MovieList = ({
     calculateMinimumCost(favoriteMovies);
 
   return (
-    <Box display="flex" justifyContent="center">
+    <Box display="flex" justifyContent="center" color="white">
       <Box>
         {movies.map((movie) => (
           <Box key={movie.imdbId} my={4}>
@@ -136,13 +137,13 @@ const MovieList = ({
           ml={8}
           minWidth="250px"
           maxWidth="250px"
-          bgcolor="white"
+          bgcolor="#007bf0"
           borderRadius={4}
           boxShadow={1}
           p={2}
         >
           <Typography variant="h6" component="h2" gutterBottom>
-            Minimum cost: {minCost}
+            Minimum cost: ${minCost}
           </Typography>
           {Object.keys(movieProviderMapping).length > 0 && (
             <Box mt={4}>
@@ -152,7 +153,7 @@ const MovieList = ({
               {Object.keys(movieProviderMapping).map((provider) => (
                 <Box key={provider} mb={4}>
                   <Typography variant="subtitle1" component="h3" gutterBottom>
-                    {provider}
+                  {`${provider.charAt(0).toUpperCase()}${provider.slice(1)}: $${platformPrices[provider]}`}
                   </Typography>
                   <List>
                     {movieProviderMapping[provider].map((movieTitle) => (

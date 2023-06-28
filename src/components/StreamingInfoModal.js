@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Box, Typography, IconButton } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import { platformPrices } from "./MovieList";
 
 const StreamingInfoModal = ({ isOpen, onRequestClose, streamingInfo }) => {
   const closeModal = () => {
@@ -44,7 +45,7 @@ const StreamingInfoModal = ({ isOpen, onRequestClose, streamingInfo }) => {
     maxHeight: "400px",
     overflowY: "auto",
     padding: "16px",
-    paddingBottom: "60px",
+    paddingBottom: "60px", // Add bottom padding to prevent cutoff
   };
 
   const platformStyles = {
@@ -64,13 +65,17 @@ const StreamingInfoModal = ({ isOpen, onRequestClose, streamingInfo }) => {
 
   let content;
   if (streamingInfo) {
-    content = Object.entries(streamingInfo).map(([platform, options], index) => (
-      <Box key={index} sx={platformStyles}>
-        <Typography variant="h3" sx={platformTitleStyles}>
-          {platform}
-        </Typography>
-      </Box>
-    ));
+    content = Object.entries(streamingInfo).map(
+      ([platform, options], index) => (
+        <Box key={index} sx={platformStyles}>
+          <Typography variant="h3" sx={platformTitleStyles}>
+            {`${platform.charAt(0).toUpperCase()}${platform.slice(1)}: $${
+              platformPrices[platform]
+            }`}
+          </Typography>
+        </Box>
+      )
+    );
   } else {
     content = (
       <Typography variant="body1" sx={noInfoStyles}>
@@ -90,11 +95,7 @@ const StreamingInfoModal = ({ isOpen, onRequestClose, streamingInfo }) => {
           <Typography variant="h2" sx={titleStyles}>
             Streaming Information
           </Typography>
-          <IconButton
-            sx={closeStyles}
-            onClick={closeModal}
-            aria-label="Close"
-          >
+          <IconButton sx={closeStyles} onClick={closeModal} aria-label="Close">
             <Close />
           </IconButton>
         </Box>
